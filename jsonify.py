@@ -68,12 +68,12 @@ def word_counts(data):
 
 def finalize(e):
     return {'date': e['date'],
-            'words': e['words'],
-            'minutes': e['minutes'],
-            'bad_words': e['bad_words'],
-            'happy_words': e['happy_words'],
-            'sad_words': e['sad_words'],
-            'sex_words': e['sex']}
+            'words': int(e['words']),
+            'minutes': float(e['minutes']),
+            'bad_words': int(e['bad_words']),
+            'happy_words': int(e['happy_words']),
+            'sad_words': int(e['sad_words']),
+            'sex_words': int(e['sex'])}
 
 if __name__ == "__main__":
     data = sorted(
