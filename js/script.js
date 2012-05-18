@@ -78,15 +78,27 @@ function collect (key, normalize) {
     d1 = collect('bad_words', false),
     d2 = collect('sad_words', false),
     d3 = collect('happy_words', false),
-    d4 = collect('sex_words', false);
+    d4 = collect('food_words', false);
 
     draw_time(container, [{data: d1, label: 'Cursewords'},
                           {data: d2, label: 'Sad words'},
                           {data: d3, label: 'Happy words'},
-                          {data: d4, label: 'Sex'}],
+                          {data: d4, label: 'Food words'}],
               'Word types used (14 day running window)');
 
 })(document.getElementById("word-types"));
+
+(function words(container) {
+    var
+    d5 = collect('sex_words', false),
+    d6 = collect('tea_words', false);
+
+    draw_time(container, [
+                          {data: d5, label: '"Sex"'},
+                          {data: d6, label: '"Tea"'}],
+              'Two important words (14 day running window)');
+
+})(document.getElementById("words"));
 
 (function length(container) {
     var

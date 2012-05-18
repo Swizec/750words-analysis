@@ -51,18 +51,21 @@ def word_counts(data):
         e[label] = sum(1 for w in words(e['entry']) if D.has_key(w.strip().lower()))
         return e
 
-    def sex(d):
-        d['sex'] = d['entry'].count('sex')
+    def word(d, w):
+        d[w] = d['entry'].count(w)
         return d
 
     bad = get_dict('badwords.txt')
     happy = get_dict('happy.txt')
     sad = get_dict('sad.txt')
+    food = get_dict('food.txt')
 
     data = map(lambda e: counts(e, 'bad_words', bad), data)
     data = map(lambda e: counts(e, 'happy_words', happy), data)
     data = map(lambda e: counts(e, 'sad_words', sad), data)
-    data = map(sex, data)
+    data = map(lambda e: counts(e, 'food_words', food), data)
+    data = map(lambda d: word(d, 'sex'), data)
+    data = map(lambda d: word(d, 'tea'), data)
 
     return data
 
@@ -73,7 +76,9 @@ def finalize(e):
             'bad_words': int(e['bad_words']),
             'happy_words': int(e['happy_words']),
             'sad_words': int(e['sad_words']),
-            'sex_words': int(e['sex'])}
+            'sex_words': int(e['sex']),
+            'food_words': int(e['food_words']),
+            'tea_words': int(e['tea'])}
 
 if __name__ == "__main__":
     data = sorted(
